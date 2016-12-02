@@ -6,7 +6,7 @@
 <isopackager emitBitmap="false" maxValidField="2">
 	<isofield
 		id="0"
-		length="8"
+		length="0"
 		name="消息头"
 		pad="false"
 		class="org.jpos.iso.IF_CHAR"/>
@@ -16,9 +16,11 @@
 		name="命令代码"
 		pad="false"
 		class="org.jpos.iso.IF_CHAR"/>
+		
+	<!-- 报文内容length=消息头length+命令代码length -->
 	<isofield
 		id="2"
-		length="10"
+		length="2"
 		name="报文内容"
 		pad="false"
 		class="org.warmsheep.encoder.comm.hsm.IF_REMAIN"/>
