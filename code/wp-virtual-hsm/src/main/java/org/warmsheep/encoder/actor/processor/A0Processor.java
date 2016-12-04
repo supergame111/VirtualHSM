@@ -13,7 +13,7 @@ import org.warmsheep.encoder.constants.RespCmdType;
 import org.warmsheep.encoder.ic.RespCodeIC;
 import org.warmsheep.encoder.ic.TxnIC;
 import org.warmsheep.encoder.security.util.EncryptUtil;
-import org.warmsheep.encoder.security.util.OddEventCheckUtil;
+import org.warmsheep.encoder.security.util.OddEvenCheckUtil;
 import org.warmsheep.encoder.util.UUIDUitl;
 
 
@@ -47,7 +47,7 @@ public class A0Processor extends AbsActor {
             }
 
             //进行奇偶校验
-            randomKeyBytes = OddEventCheckUtil.parityOfOdd(randomKeyBytes, 0);
+            randomKeyBytes = OddEvenCheckUtil.parityOfOdd(randomKeyBytes, 0);
             //产生校验值
             String checkValue = EncryptUtil.desEncryptHexString("0000000000000000", ISOUtil.hexString(randomKeyBytes));
             String encryptKey = getEncryptKey(a0CommandBean.getKeyType());
@@ -64,7 +64,7 @@ public class A0Processor extends AbsActor {
                 }
                 String zmkClearText = EncryptUtil.desDecryptToHex(zmkCipher, KeyConstants.ZMK_000);
                 //明文进行奇偶校验
-                zmkClearText = ISOUtil.hexString(OddEventCheckUtil.parityOfOdd(ISOUtil.hex2byte(zmkClearText), 0));
+                zmkClearText = ISOUtil.hexString(OddEvenCheckUtil.parityOfOdd(ISOUtil.hex2byte(zmkClearText), 0));
 
 
                 randomKeyOnZmk = EncryptUtil.desEncryptHexString(ISOUtil.hexString(randomKeyBytes), zmkClearText);

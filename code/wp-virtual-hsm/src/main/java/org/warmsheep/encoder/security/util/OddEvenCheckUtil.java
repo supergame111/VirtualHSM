@@ -7,7 +7,7 @@ import org.jpos.iso.ISOUtil;
  * @author Warmsheep
  *
  */
-public class OddEventCheckUtil {
+public class OddEvenCheckUtil {
 
 	public static void main(String args[]) throws Exception {
 		String s = "2222222222222222";

@@ -13,7 +13,7 @@ import org.warmsheep.encoder.constants.RespCmdType;
 import org.warmsheep.encoder.ic.RespCodeIC;
 import org.warmsheep.encoder.ic.TxnIC;
 import org.warmsheep.encoder.security.util.EncryptUtil;
-import org.warmsheep.encoder.security.util.OddEventCheckUtil;
+import org.warmsheep.encoder.security.util.OddEvenCheckUtil;
 
 
 /**
@@ -80,7 +80,7 @@ public class A6Processor extends AbsActor {
             //解密主密钥明文
             String zmkClearText = EncryptUtil.desDecryptToHex(zmkCipher, KeyConstants.ZMK_000);
             //明文进行奇偶校验
-            zmkClearText = ISOUtil.hexString(OddEventCheckUtil.parityOfOdd(ISOUtil.hex2byte(zmkClearText), 0));
+            zmkClearText = ISOUtil.hexString(OddEvenCheckUtil.parityOfOdd(ISOUtil.hex2byte(zmkClearText), 0));
 
             String keyClearText = null;
             //解密Key明文
@@ -98,7 +98,7 @@ public class A6Processor extends AbsActor {
             }
 
             //明文进行奇偶校验
-            keyClearText = ISOUtil.hexString(OddEventCheckUtil.parityOfOdd(ISOUtil.hex2byte(keyClearText), 0));
+            keyClearText = ISOUtil.hexString(OddEvenCheckUtil.parityOfOdd(ISOUtil.hex2byte(keyClearText), 0));
 
             //用LMK加密
             String keyOnLmk = EncryptUtil.desEncryptHexString(keyClearText, encryptKey);
