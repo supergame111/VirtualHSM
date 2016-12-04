@@ -16,6 +16,11 @@
 		<property name="FK" value="CommonValid FKProcessor Response"/>
 		<property name="A6" value="CommonValid A6Processor Response"/>
 		<property name="FA" value="CommonValid FAProcessor Response"/>
+		<property name="MA" value="CommonValid MAProcessor Response"/>
+		<property name="MC" value="CommonValid MCProcessor Response"/>
+		<property name="34" value="CommonValid _34Processor Response"/>
+		<property name="37" value="CommonValid _37Processor Response"/>
+		<property name="38" value="CommonValid _38Processor Response"/>
 	</participant>
 	
 	<!--  
@@ -48,7 +53,22 @@
 	<group name="FAProcessor">
 		<participant class="org.warmsheep.encoder.actor.processor.FAProcessor" logger="Q2"/>
 	</group> 
-	
+	<group name="MAProcessor">
+		<participant class="org.warmsheep.encoder.actor.processor.MAProcessor" logger="Q2"/>
+	</group>
+	<group name="MCProcessor">
+		<participant class="org.warmsheep.encoder.actor.processor.MCProcessor" logger="Q2"/>
+	</group>
+	<group name="_34Processor">
+		<participant class="org.warmsheep.encoder.actor.processor._34Processor" logger="Q2"/>
+	</group>
+	<group name="_37Processor">
+		<participant class="org.warmsheep.encoder.actor.processor._37Processor" logger="Q2"/>
+	</group>
+	<group name="_38Processor">
+		<participant class="org.warmsheep.encoder.actor.processor._38Processor" logger="Q2"/>
+	</group>
+
 	<!--  报文响应器  -->
 	<group name="Response">
 		<participant class="org.warmsheep.encoder.actor.processor.ResponseProcessor" logger="Q2"/>

@@ -15,4 +15,6 @@ public class KeyConstants {
 	public static final String EDK_007 = "13131313131313131515151515151515";
 	
 	public static final String ZEK_00A = "23232323232323232525252525252525";
+
+	public static final String RSA_034 = "5E6A48D75D51CE6E63AB9E181ED19198";
 }

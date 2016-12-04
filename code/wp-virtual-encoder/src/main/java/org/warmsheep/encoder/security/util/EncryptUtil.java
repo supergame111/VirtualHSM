@@ -8,6 +8,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.jpos.iso.ISOUtil;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 /**
  * DES加密工具类
@@ -127,12 +129,13 @@ public class EncryptUtil {
 	public static String sha1HexEncrypt(String message) throws Exception {
 		return DigestUtils.sha1Hex(message);
 	}
-	
+
 	/**
 	 * 密码加密，先SHA加密，然后使用DES加密
-	 * @param message
+	 * @param password
+	 * @param key
 	 * @return
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public static String passwordEncrypt(String password,String key) throws Exception{
 		password = DigestUtils.sha1Hex(password);
@@ -192,12 +195,22 @@ public class EncryptUtil {
 		return null;
 	}
 
+	//解码返回byte
+	public static byte[] decryptBASE64(String key) throws Exception {
+		return (new BASE64Decoder()).decodeBuffer(key);
+	}
+
+	//编码返回字符串
+	public static String encryptBASE64(byte[] key) throws Exception {
+		return (new BASE64Encoder()).encodeBuffer(key);
+	}
+
 	public static void main(String[] args) throws Exception {
 		// 加密密码测试DEMO
 //		System.out.println(md5Encrypt("湖南"));
 		String key = "0123456789ABCDEFFEDCBA9876543210";
 		String password = "11111111";
-		System.out.println("密钥:"+key);
+		System.out.println("密钥:"+key+"长度:"+String.format("%04x",key.length()));
 		System.out.println("加密前的明文:" + password);
 		
 		String desText = "";

@@ -26,6 +26,11 @@
 			<property name="FK" value="ZAK转加密"/>
 			<property name="MS" value="产生报文MAC"/>
 			<property name="MU" value="计算数据CBC-MAC"/>
+			<property name="MA" value="生成一个MAC"/>
+			<property name="MC" value="校验一个MAC"/>
+			<property name="34" value="产生一对RSA密钥"/>
+			<property name="37" value="私钥签名"/>
+			<property name="38" value="公钥验证"/>
 		</filter>
 		<filter 
 			class="org.warmsheep.encoder.comm.HsmLogFilter"
@@ -38,6 +43,11 @@
 			<property name="FL" value="ZAK转加密"/>
 			<property name="MT" value="产生报文MAC"/>
 			<property name="MV" value="计算数据CBC-MAC"/>
+			<property name="MB" value="生成一个MAC"/>
+			<property name="MD" value="校验一个MAC"/>
+			<property name="34" value="产生一对RSA密钥"/>
+			<property name="37" value="私钥签名"/>
+			<property name="38" value="公钥验证"/>
 		</filter>
 	</channel>
 	<request-listener 

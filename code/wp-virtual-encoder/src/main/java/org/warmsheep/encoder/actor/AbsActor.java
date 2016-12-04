@@ -10,6 +10,7 @@ import org.jpos.core.ConfigurationException;
 import org.jpos.iso.ISOException;
 import org.jpos.iso.ISOMsg;
 import org.jpos.transaction.TransactionParticipant;
+import org.warmsheep.encoder.constants.KeyConstants;
 import org.warmsheep.encoder.ic.LogIC;
 /**
  * 业务处理器、业务验证器和选择器的抽象类，
@@ -26,6 +27,50 @@ public abstract class AbsActor implements TransactionParticipant,Configurable {
 	
 	protected String downloadFileDirectory;
 	protected String reportPeriod;
+
+	public String getEncryptKey(String keyType){
+		//选择密钥
+		String encryptKey = null;
+		switch (keyType) {
+			case "000":    //ZMK/KEK
+				encryptKey = KeyConstants.ZMK_000;
+				break;
+			case "001":    //ZPK
+				encryptKey = KeyConstants.ZPK_001;
+				break;
+			case "002":    //PVK/TPK/TMK
+				encryptKey = KeyConstants.TPK_TMK_PVK_002;
+				break;
+			case "003":    //TAK
+				encryptKey = KeyConstants.TAK_003;
+				break;
+			case "007":    //edk
+				encryptKey = KeyConstants.EDK_007;
+				break;
+			case "008"://ZAK
+				encryptKey = KeyConstants.ZAK_008;
+				break;
+			case "00A":    //ZEK/DEK
+				break;
+			case "00C":
+				break;
+			case "100":
+				break;
+			case "109":
+				break;
+			case "209":
+				break;
+			case "309":
+				break;
+			case "402":
+				break;
+			case "509":
+				break;
+			default:
+				break;
+		}
+		return encryptKey;
+	}
 	/**
 	 * 处理方法，由子类来实现
 	 */
