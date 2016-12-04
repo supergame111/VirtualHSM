@@ -9,7 +9,7 @@ FA:ZPK转加密
 MS:产生报文MAC    
 MU:计算数据CBC-MAC    
 MA:生成一个MAC    
-MC:校验一个MAC 
-34:产生一对RSA密钥 
-37:私钥签名 
+MC:校验一个MAC    
+34:产生一对RSA密钥    
+37:私钥签名    
 38:公钥验证    
