@@ -20,6 +20,7 @@
 			direction="incoming"
 			logger="Q2">
 			<property name="A0" value="产生工作密钥"/>
+			<property name="A4" value="由密的成分生成密钥"/>
 			<property name="A6" value="导入密钥"/>
 			<property name="CC" value="PIN转加密"/>
 			<property name="FA" value="ZPK转加密"/>
@@ -37,6 +38,7 @@
 			direction="outgoing"
 			logger="Q2">
 			<property name="A1" value="产生工作密钥"/>
+			<property name="A5" value="由密的成分生成密钥"/>
 			<property name="A7" value="导入密钥"/>
 			<property name="CD" value="PIN转加密"/>
 			<property name="FB" value="ZPK转加密"/>

@@ -34,44 +34,7 @@ public class A6Processor extends AbsActor {
             A6CommandBean a6CommandBean = A6CommandBean.build(header, commandType, requestData);
             //选择密钥
             String encryptKey = getEncryptKey(a6CommandBean.getKeyType());
-            switch (a6CommandBean.getKeyType()) {
-                case "000":    //ZMK/KEK
-                    encryptKey = KeyConstants.ZMK_000;
-                    break;
-                case "001":    //ZPK
-                    encryptKey = KeyConstants.ZPK_001;
-                    break;
-                case "002":    //PVK/TPK/TMK
-                    encryptKey = KeyConstants.TPK_TMK_PVK_002;
-                    break;
-                case "003":    //TAK
-                    encryptKey = KeyConstants.TAK_003;
-                    break;
-                case "007":    //edk
-                    encryptKey = KeyConstants.EDK_007;
-                    break;
-                case "008"://ZAK
-                    encryptKey = KeyConstants.ZAK_008;
-                    break;
-                case "00A":    //ZEK/DEK
-                    break;
-                case "00C":
-                    break;
-                case "100":
-                    break;
-                case "109":
-                    break;
-                case "209":
-                    break;
-                case "309":
-                    break;
-                case "402":
-                    break;
-                case "509":
-                    break;
-                default:
-                    break;
-            }
+
             String zmkCipher = a6CommandBean.getZmkCipher();
             String zmkFlag = zmkCipher.substring(0, 1);
             if (zmkFlag.equalsIgnoreCase("X")) {

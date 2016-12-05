@@ -205,6 +205,20 @@ public class EncryptUtil {
 		return (new BASE64Encoder()).encodeBuffer(key);
 	}
 
+	public static String xor(String p1, String p2) {
+		byte[] b1 = ByteUtil.convertHexString(p1), b2 = ByteUtil.convertHexString(p2);
+		if (b1.length != b2.length){
+			System.err.println("参与异或的数据长度必须一致，参数一的长度："+b1.length+"参数二的长度："+b2.length);
+			return null;
+		}
+		byte[] buf = new byte[b1.length];
+		for (int i = 0; i< b1.length; i++){
+			buf[i] = (byte) (b1[i]^b2[i]);
+		}
+
+		return ByteUtil.bytesToHexString(buf);
+	}
+
 	public static void main(String[] args) throws Exception {
 		// 加密密码测试DEMO
 //		System.out.println(md5Encrypt("湖南"));
