@@ -1,5 +1,6 @@
 package org.warmsheep.encoder.security.rsa;
 
+import org.jpos.iso.ISOUtil;
 import org.junit.Test;
 import org.warmsheep.encoder.constants.KeyConstants;
 import org.warmsheep.encoder.security.mac.impl.ANSIX919;
@@ -19,6 +20,7 @@ public class RSAHelperTest {
         RSA.generateKeyPair(1024,"01");
         System.out.println("私钥BASE64："+ (RSA.getPrivateKey("01")));
         System.out.println("公钥BASE64："+ (RSA.getPublicKey("01")));
+        System.out.println("私钥："+ ISOUtil.hexString(RSA.getPrivateKeyBytes("01")));
         System.out.println("私钥："+ ByteUtil.bytesToHexString(EncryptUtil.decryptBASE64(RSA.getPrivateKey("01"))));
         System.out.println("公钥："+ ByteUtil.bytesToHexString(EncryptUtil.decryptBASE64(RSA.getPublicKey("01"))));
         String signature = RSAHelper.sign(data.getBytes(),RSA.getPrivateKey("01"));

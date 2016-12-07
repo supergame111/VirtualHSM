@@ -2,10 +2,7 @@ package org.warmsheep.encoder.security.rsa;
 
 import org.warmsheep.encoder.security.util.EncryptUtil;
 
-import java.security.Key;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
+import java.security.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,11 +22,19 @@ public class RSA {
         return EncryptUtil.encryptBASE64(key.getEncoded());
     }
 
+    public static byte[] getPublicKeyBytes(String index) {
+        return keyStore.get(index).getPublic().getEncoded();
+    }
+
     public static String getPrivateKey(String index) throws Exception {
         //获得map中的公钥对象 转为key对象
         Key key = keyStore.get(index).getPrivate();
         //编码返回字符串
         return EncryptUtil.encryptBASE64(key.getEncoded());
+    }
+
+    public static byte[] getPrivateKeyBytes(String index) {
+        return keyStore.get(index).getPrivate().getEncoded();
     }
 
     public static void generateKeyPair(int length, String index) throws NoSuchAlgorithmException {

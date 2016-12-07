@@ -1,6 +1,7 @@
 package org.warmsheep.encoder.actor.processor;
 
 import org.jpos.iso.ISOMsg;
+import org.jpos.iso.ISOUtil;
 import org.jpos.transaction.Context;
 import org.warmsheep.encoder.actor.AbsActor;
 import org.warmsheep.encoder.bean._34CommandBean;
@@ -31,7 +32,7 @@ public class _34Processor extends AbsActor {
             int keyLength = Integer.parseInt(commandBean.getKeyLength());
             if (keyLength % 8 == 0) {
                 RSA.generateKeyPair(keyLength, commandBean.getKeyIndex());
-                String privateKey = EncryptUtil.desEncryptHexString(RSA.getPrivateKey(commandBean.getKeyIndex()), KeyConstants.RSA_034);
+                String privateKey = EncryptUtil.desEncryptHexString(ISOUtil.hexString(RSA.getPrivateKeyBytes(commandBean.getKeyIndex())), KeyConstants.RSA_034);
                 String privateKeyLength = String.format("%04d",privateKey.length());
                 String publicKey = RSA.getPublicKey(commandBean.getKeyIndex());
                 context.put(TxnIC.RESULT_TYPE, RespCmdType._34);
