@@ -121,9 +121,10 @@ public class RSACrtUtil {
          *  在c的代码里没符号位,所以1024bit的n,java里BigInteger是1025bit长
          *  直接拷贝128byte出来,正数第一个字节是是0,后面会丢掉最后一字节
          * */
-        System.arraycopy(n.toByteArray(), 1, pubkey, 0, 128);
-        System.arraycopy(p.toByteArray(), 1, prikey, 0, 64);
-        System.arraycopy(q.toByteArray(), 1, prikey, 64, 64);
+        System.arraycopy(n.toByteArray(), 1, pubkey, 0, RSA_MODULUS_LEN);
+        int tmp = RSA_MODULUS_LEN/2;
+        System.arraycopy(p.toByteArray(), 1, prikey, 0, tmp);
+        System.arraycopy(q.toByteArray(), 1, prikey, tmp, tmp);
         //
     }
 }

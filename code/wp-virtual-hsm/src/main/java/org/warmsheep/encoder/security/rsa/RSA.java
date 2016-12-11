@@ -37,7 +37,7 @@ public class RSA {
         return keyStore.get(index).getPrivate().getEncoded();
     }
 
-    public static void generateKeyPair(int length, String index) throws NoSuchAlgorithmException {
+    public static KeyPair generateKeyPair(int length, String index) throws NoSuchAlgorithmException {
 
         //获得对象 KeyPairGenerator 参数
         KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(KEY_ALGORITHM);
@@ -47,6 +47,8 @@ public class RSA {
 
         //公私钥对象存入map中
         keyStore.put(index,keyPair);
+
+        return keyPair;
     }
 
 
