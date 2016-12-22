@@ -2,6 +2,8 @@ package org.warmsheep.encoder.security.rsa;
 
 import javax.crypto.Cipher;
 import java.security.*;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 
@@ -17,6 +19,22 @@ public class RSAHelper {
 
 //    public static final String PUBLIC_KEY = "RSAPublicKey";//公钥
 //    public static final String PRIVATE_KEY = "RSAPrivateKey";//私钥
+
+//    public static KeyPair generateKeyPair(String der) {
+//        KeyPair keyPair = new KeyPair();
+//        return null;
+//    }
+    public static PrivateKey generatePrivateKey(byte[] key) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        KeySpec keySpec = new PKCS8EncodedKeySpec(key);
+        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORTHM);
+        return keyFactory.generatePrivate(keySpec);
+    }
+
+    public static PublicKey geneneratePublicKey(byte[] key) throws InvalidKeySpecException, NoSuchAlgorithmException{
+        KeySpec keySpec = new X509EncodedKeySpec(key);
+        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORTHM);
+        return keyFactory.generatePublic(keySpec);
+    }
 
     /**
      * 用私钥加密
