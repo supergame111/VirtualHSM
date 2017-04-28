@@ -10,4 +10,6 @@ public interface RespCodeIC {
 	public final static String MAC_VALID_FAIL = "01"; //MAC校验失败
 	public final static String SIGN_FAIL = "35"; // 签名失败
 	public final static String SIGNATURE_VERIFY_FAIL = "39";
+	public final static String MODE_ERROR = "04"; // 模式错误
+	public final static String UNDEFINED_SOLUTION_ID = "05"; // 为定义的方案ID
 }

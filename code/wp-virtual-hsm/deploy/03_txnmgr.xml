@@ -22,6 +22,7 @@
 		<property name="34" value="CommonValid _34Processor Response"/>
 		<property name="37" value="CommonValid _37Processor Response"/>
 		<property name="38" value="CommonValid _38Processor Response"/>
+		<property name="W2" value="CommonValid W2Processor Response"/>
 	</participant>
 	
 	<!--  
@@ -32,7 +33,7 @@
 			<property name="request-data-length" value="166"/>
 		</participant>
 	</group>
-	
+	<!-- 命令处理器 -->
 	<group name="MSProcessor">
 		<participant class="org.warmsheep.encoder.actor.processor.MSProcessor" logger="Q2"/>
 	</group> 
@@ -71,6 +72,9 @@
 	</group>
 	<group name="_38Processor">
 		<participant class="org.warmsheep.encoder.actor.processor._38Processor" logger="Q2"/>
+	</group>
+	<group name="W2Processor">
+		<participant class="org.warmsheep.encoder.actor.processor.W2Processor" logger="Q2"/>
 	</group>
 
 	<!--  报文响应器  -->

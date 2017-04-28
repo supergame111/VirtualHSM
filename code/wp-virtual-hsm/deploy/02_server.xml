@@ -3,7 +3,7 @@
 	name="hsm" 
 	class="org.jpos.q2.iso.QServer" 
 	logger="Q2">
-	<attr name="port" type="int">9998</attr>
+	<attr name="port" type="int">6666</attr>
 	<channel 
 		name="channel-hsm" 
 		class="org.jpos.iso.channel.NACChannel"
@@ -32,6 +32,7 @@
 			<property name="34" value="产生一对RSA密钥"/>
 			<property name="37" value="私钥签名"/>
 			<property name="38" value="公钥验证"/>
+			<property name="W2" value="数据加密计算"/>
 		</filter>
 		<filter 
 			class="org.warmsheep.encoder.comm.HsmLogFilter"
@@ -50,6 +51,7 @@
 			<property name="34" value="产生一对RSA密钥"/>
 			<property name="37" value="私钥签名"/>
 			<property name="38" value="公钥验证"/>
+			<property name="W3" value="数据解密计算"/>
 		</filter>
 	</channel>
 	<request-listener 
