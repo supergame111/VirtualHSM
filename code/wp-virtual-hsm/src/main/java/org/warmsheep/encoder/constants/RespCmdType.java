@@ -34,4 +34,6 @@ public class RespCmdType {
     public static final String _38 = "38";	//38的回应类型
     
     public static final String W3 = "W3";	//W2的回应类型
+
+	public static final String NC = "NC";	//NC的回应类型
 }

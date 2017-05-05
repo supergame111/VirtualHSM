@@ -14,6 +14,9 @@ import org.warmsheep.encoder.security.des.impl.DESede;
 
 public class W2Processor extends AbsActor {
 
+    private static final String LMK_109 = "ArCv0lrEPPmGMa47qgHNh8RadzSUY3w9";
+    private static final String LMK_209 = "ZJuEp44l3wiFZFDh5PASLUgGE9QNi4Um";
+
 	@Override
 	public int prepare(long id, Serializable serializable) {
         Context context = (Context) serializable;
@@ -26,8 +29,20 @@ public class W2Processor extends AbsActor {
             W2CommandBean commandBean = W2CommandBean.build(header, commandType, requestData);
             String encMode = commandBean.getEncModeFlag();
             String solutionId = commandBean.getSolutionId();
+            String rootKeyType = commandBean.getRootKeyType();
             String rootKey = commandBean.getRootKey().substring(1);
             String data = commandBean.getData();
+
+            // LMK 解密
+            if (rootKeyType.equals("109")) {
+                DESede rootKeydes = DESede.newInstance16(ISOUtil.hex2byte(LMK_109));
+                rootKey = ISOUtil.hexString(rootKeydes.decrypt(ISOUtil.hex2byte(rootKey)));
+            } else if (rootKeyType.equals("209")){
+                DESede rootKeydes = DESede.newInstance16(ISOUtil.hex2byte(LMK_209));
+                rootKey = ISOUtil.hexString(rootKeydes.decrypt(ISOUtil.hex2byte(rootKey)));
+            } else{
+
+            }
             
             context.put(TxnIC.RESULT_TYPE, RespCmdType.W3);
             String result = "";
@@ -52,7 +67,7 @@ public class W2Processor extends AbsActor {
             } else {
                 context.put(TxnIC.RESULT_CODE, RespCodeIC.MODE_ERROR);
             }
-            String resultLen = String.format("%04d", result.length()/2);
+            String resultLen = String.format("%03d", result.length()/2);
             context.put(TxnIC.RESULT_DATA, resultLen+result);
             return PREPARED | NO_JOIN;
         } catch (Exception e){

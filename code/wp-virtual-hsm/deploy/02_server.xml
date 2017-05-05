@@ -33,6 +33,7 @@
 			<property name="37" value="私钥签名"/>
 			<property name="38" value="公钥验证"/>
 			<property name="W2" value="数据加密计算"/>
+			<property name="NC" value="加密机版本信息"/>
 		</filter>
 		<filter 
 			class="org.warmsheep.encoder.comm.HsmLogFilter"
@@ -52,6 +53,7 @@
 			<property name="37" value="私钥签名"/>
 			<property name="38" value="公钥验证"/>
 			<property name="W3" value="数据解密计算"/>
+			<property name="NC" value="加密机版本信息"/>
 		</filter>
 	</channel>
 	<request-listener 

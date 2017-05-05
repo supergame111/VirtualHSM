@@ -23,6 +23,7 @@
 		<property name="37" value="CommonValid _37Processor Response"/>
 		<property name="38" value="CommonValid _38Processor Response"/>
 		<property name="W2" value="CommonValid W2Processor Response"/>
+		<property name="NC" value="NCProcessor Response"/>
 	</participant>
 	
 	<!--  
@@ -75,6 +76,9 @@
 	</group>
 	<group name="W2Processor">
 		<participant class="org.warmsheep.encoder.actor.processor.W2Processor" logger="Q2"/>
+	</group>
+	<group name="NCProcessor">
+		<participant class="org.warmsheep.encoder.actor.processor.NCProcessor" logger="Q2"/>
 	</group>
 
 	<!--  报文响应器  -->

@@ -20,12 +20,12 @@ public class W2CommandBean extends CommandBean {
         commandBean.setRootKey(commandContent.substring(index, index+=33));
 		int tmp = Integer.valueOf(commandContent.substring(index, index+=1));
 		commandBean.setDiversifyNum(tmp);
-        commandBean.setDiversifyData(commandContent.substring(index, index+=tmp));
+        commandBean.setDiversifyData(commandContent.substring(index, index+=tmp*32));
         commandBean.setSessionKeyFlag(commandContent.substring(index, index+=1));
         if (!commandBean.getSessionKeyFlag().equals("0"))
         	commandBean.setSessionKey(commandContent.substring(index, index+=32));
         commandBean.setDataPaddingFlag(commandContent.substring(index, index+=1));
-        tmp = Integer.valueOf(commandContent.substring(index, index+=4));
+        tmp = Integer.valueOf(commandContent.substring(index, index+=3));
         commandBean.setDataLen(tmp);
         commandBean.setData(commandContent.substring(index, index+=tmp*2));
         return commandBean;
